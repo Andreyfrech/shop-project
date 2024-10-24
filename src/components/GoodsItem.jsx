@@ -1,4 +1,6 @@
 import Price from "./Price";
+import { ShopContext } from "../context";
+import { useContext } from "react";
 
 export function GoodsItem(props) {
   const {
@@ -7,8 +9,10 @@ export function GoodsItem(props) {
     description,
     price,
     images: { full_background },
-    addToBasket = Function.prototype,
   } = props;
+
+  const { addToBasket } = useContext(ShopContext);
+
   const displayPrice =
     price === 0 ? Math.floor(Math.random() * 1000) + 1 : price;
   return (
